@@ -4,10 +4,21 @@ import numpy as np
 from io import BytesIO
 import streamlit.components.v1 as components
 from st_custom_components import st_audiorec
+import whisper
+import base64
 
-def transcribe_audio(audio):
-    # code to transcribe audio to text using Speech-to-Text API
-    return text
+def transcribe_audio(audio_data):
+    # Decode base64 audio to bytes
+    audio_bytes = base64.b64decode(audio_data)
+    # Save audio to a .wav file
+    with open("audio.wav", "wb") as audio_file:
+        audio_file.write(audio_bytes)
+    # Load the Whisper ASR model
+    model = whisper.load_model("base")
+    # Transcribe the audio
+    result = model.transcribe("audio.wav")
+    # Return the transcribed text
+    return result["text"]
 
 def generate_response(text):
     # code to generate response from GPT model
@@ -25,6 +36,8 @@ def main():
     if wav_audio_data is not None:
         # display audio data as received on the backend
         st.audio(wav_audio_data, format='audio/wav')
+        transcript = transcribe_audio(wav_audio_data)
+        st.write(f"Transcript: {transcript}")
 
         # # Step 2: Transcribe audio to text
         # text = transcribe_audio(audio)
