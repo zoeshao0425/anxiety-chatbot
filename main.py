@@ -26,19 +26,18 @@ def main():
         if wav_audio_data is not None:
             # display audio data as received on the backend
             st.audio(wav_audio_data, format='audio/wav')
-            
 
-        # Step 2: Transcribe audio to text
-        text = transcribe_audio(audio)
+        # # Step 2: Transcribe audio to text
+        # text = transcribe_audio(audio)
         
-        # Step 3: Generate response using GPT model
-        response = generate_response(text)
+        # # Step 3: Generate response using GPT model
+        # response = generate_response(text)
 
-        # Step 4: Synthesize response to speech
-        response_audio = synthesize_speech(response)
+        # # Step 4: Synthesize response to speech
+        # response_audio = synthesize_speech(response)
 
-        # Play the response audio
-        st.audio(response_audio)
+        # # Play the response audio
+        # st.audio(response_audio)
 
 if __name__ == '__main__':
     main()
