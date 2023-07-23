@@ -19,13 +19,12 @@ def synthesize_speech(text):
 
 def main():
     st.title("Voice Chatbot")
-    if st.button('Record'):
-        # Step 1: Record audio
-        wav_audio_data = st_audiorec()
+    # Step 1: Record audio
+    wav_audio_data = st_audiorec()
 
-        if wav_audio_data is not None:
-            # display audio data as received on the backend
-            st.audio(wav_audio_data, format='audio/wav')
+    if wav_audio_data is not None:
+        # display audio data as received on the backend
+        st.audio(wav_audio_data, format='audio/wav')
 
         # # Step 2: Transcribe audio to text
         # text = transcribe_audio(audio)
