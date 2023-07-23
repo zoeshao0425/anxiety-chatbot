@@ -36,7 +36,9 @@ def main():
     if wav_audio_data is not None:
         # display audio data as received on the backend
         st.audio(wav_audio_data, format='audio/wav')
+        print("Start transcribing...")
         transcript = transcribe_audio(wav_audio_data)
+        print("Transcribing finished")
         st.write(f"Transcript: {transcript}")
 
         # # Step 2: Transcribe audio to text
